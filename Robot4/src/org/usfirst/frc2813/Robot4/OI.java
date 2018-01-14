@@ -65,6 +65,7 @@ public class OI {
         
         new JoystickButton(joystick1, 4).whileHeld(new Climb(-1.0));
         new JoystickButton(joystick1, 3).whileHeld(new Climb(1.0));
+        new JoystickButton(joystick1, 5).whenPressed(new ResetGyro());
         new JoystickButton(joystick1, 2).whenPressed(new ResetEncoders());
         new JoystickButton(joystick1, 1).whenPressed(new PrintOutEncoderValues());
 

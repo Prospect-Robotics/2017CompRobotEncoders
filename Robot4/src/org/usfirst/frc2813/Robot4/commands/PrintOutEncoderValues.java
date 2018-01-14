@@ -17,11 +17,11 @@ public class PrintOutEncoderValues extends InstantCommand {
 
     // Called once when the command executes
     protected void initialize() {
-    	System.out.println("Encoder 1 Value: " + Robot.driveTrain.quadratureEncoder1.get());
+    	//System.out.println("Encoder 1 Value: " + Robot.driveTrain.quadratureEncoder1.get());
     	//System.out.println("Encoder 1 Distance:" + Robot.driveTrain.quadratureEncoder1.getDistance());
     	System.out.println("Encoder 2 Value: " + Robot.driveTrain.quadratureEncoder2.get());
     	//System.out.println("Encoder 2 Distance:" + Robot.driveTrain.quadratureEncoder2.getDistance());
-    	System.out.println("Encoder 3 Value: " + Robot.driveTrain.quadratureEncoder3.get());
+    	//System.out.println("Encoder 3 Value: " + Robot.driveTrain.quadratureEncoder3.get());
     	//System.out.println("Encoder 2 Distance:" + Robot.driveTrain.quadratureEncoder3.getDistance());
     	System.out.println("Encoder 4 Value: " + Robot.driveTrain.quadratureEncoder4.get());
     	//System.out.println("Encoder 4 Distance:" + Robot.driveTrain.quadratureEncoder4.getDistance());

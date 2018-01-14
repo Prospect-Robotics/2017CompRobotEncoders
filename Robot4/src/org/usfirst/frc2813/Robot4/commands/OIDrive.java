@@ -41,7 +41,7 @@ public class OIDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.mecanumDrive(Robot.oi.joystick1, Robot.gyro.getAngle());//Use Robot.gyro.getAngle() for field-oriented and 0 for robot-oriented
+    	Robot.driveTrain.mecanumDrive(Robot.oi.joystick1, 0);//Use Robot.gyro.getAngle() for field-oriented and 0 for robot-oriented
     }
 
     // Make this return true when this Command no longer needs to run execute()
