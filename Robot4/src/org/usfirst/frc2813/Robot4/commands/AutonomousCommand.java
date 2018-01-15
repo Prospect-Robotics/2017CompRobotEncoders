@@ -34,16 +34,22 @@ public class AutonomousCommand extends CommandGroup {
 		//addSequential(new PrintOutRawValueOverTime(500,Robot.driveTrain.quadratureEncoder2,Robot.driveTrain.quadratureEncoder3,Robot.driveTrain.quadratureEncoder4));
     	//addSequential(new ResetEncoders());
     	//addParallel(new AutoDrive(0, -.75, 100, Robot.driveTrain.quadratureEncoder2));
-		addSequential(new AutoDrive(0,-1, 80, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder3, Robot.driveTrain.quadratureEncoder4));//x speed percent,y speed percent,distance,encoder
-		//addSequential(new ResetEncoders());
-		//addSequential(new AutoDrive(0, -0.3, 24, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder4));
+		addSequential(new AutoDrive(0,-.9, 60, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder3, Robot.driveTrain.quadratureEncoder4));//x speed percent,y speed percent,distance,encoder
+		addSequential(new ResetGyro());
+		addSequential(new Rotate(150,0.75));
+		System.out.println("In AutonomousCommand after reset gyro.getAngle() is: "+Robot.gyro.getAngle());
+		//addSequential(new PrintOutRotate());
+		addSequential(new ResetEncoders());
+		addSequential(new ResetGyro());
+		addSequential(new AutoDrive(0, -.9, 48, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder3, Robot.driveTrain.quadratureEncoder4));
 		//addSequential(new ResetEncoders());
 		//addSequential(new TimedCommand(5));
 		//addSequential(new ResetGyro());
 		//System.out.println("SLOW");
 		//addSequential(new AutoDrive(0, 0.75, 36, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder4));
 		//addSequential(new AutoDrive(0, 0.3, 24, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder4));
-		//addSequential(new Rotate(90,0.5));
+		
+		System.out.println("In AutonomousCommand after reset gyro.getAngle() is: "+Robot.gyro.getAngle());
         //addSequential(new AutoDrive(0,-0.75,30.5, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder4));
 		// To run multiple commands at the same time,
         // use addParallel()

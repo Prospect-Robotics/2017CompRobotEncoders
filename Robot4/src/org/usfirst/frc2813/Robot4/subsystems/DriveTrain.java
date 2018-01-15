@@ -57,6 +57,7 @@ public class DriveTrain extends Subsystem {
     }
     @SuppressWarnings("deprecation")
 	public void mecanumDrive(Joystick joystick1, double gyroAngle) {
+    	//System.out.println("Twist:" + joystick1.getTwist());
     	robotDrive.mecanumDrive_Cartesian(joystick1.getX(),joystick1.getY(), joystick1.getTwist(), gyroAngle);
     }
 	@SuppressWarnings("deprecation")

@@ -73,11 +73,11 @@ public class AutoDrive extends Command {
 			throttleMin = 0.2;
 		}
 		minDist=0.01;//very small number to come to complete stop at
-		lerpStart = 55;//Distance from target to start slowing down.
+		lerpStart = m_distance/2;//Distance from target to start slowing down.
 		lerpStop = 2;//Distance from target beyond which use minimum speed.
 		lerpEnd = 0.2;//Minimum speed to use
 		accelStartDistance=0;
-		accelStopDistance=15;
+		accelStopDistance=m_distance/3;
 		accelStartValue=0.2;
 		accelStopValue =Math.abs(strafeSpeed);
 //		m_stoppingDistance = new double[(int) 0.5];
@@ -104,7 +104,10 @@ public class AutoDrive extends Command {
 	private double distanceTraveled() {
 		return (Math.abs(myEncoder1.getDistance()*RobotMap.WHEEL_CIRCUMFERENCE)+Math.abs(myEncoder2.getDistance()*RobotMap.WHEEL_CIRCUMFERENCE))/2;
 	}
-	private double calcThrottle(double d) {//set throttle given distance from target
+	private double calcThrottleSteadyState() {
+		return maxSpeed;
+	}
+	private double calcThrottleDecelerate(double d) {//set throttle given distance from target
 		if (d<minDist) {
 			return 0;
 		}
@@ -112,14 +115,14 @@ public class AutoDrive extends Command {
 			return lerpEnd;
 		}
 		if (d>=lerpStart) {
-			if (distanceTraveled()<accelStopDistance) {
-				return distanceTraveled()*((accelStopValue-accelStartValue)/(accelStopDistance-accelStartDistance))+accelStartValue;
-			}
+			//if (distanceTraveled()<accelStopDistance) {
+				//return distanceTraveled()*((accelStopValue-accelStartValue)/(accelStopDistance-accelStartDistance))+accelStartValue;
+			//}
 			return maxSpeed;
 		}
 		
 		
-		
+	
 		return (d-lerpStop) * (maxSpeed - lerpEnd)/(lerpStart-lerpStop) + lerpEnd;
 		
 		/*
@@ -135,6 +138,12 @@ public class AutoDrive extends Command {
 		 *
 		 */
 	}
+	private double calcThrottleAccelerate(double d) {
+		if (distanceTraveled() < accelStopDistance) {
+			return distanceTraveled()*((accelStopValue-accelStartValue)/(accelStopDistance-accelStartDistance))+accelStartValue;
+		}
+		return maxSpeed;
+	}
 	/*private double lerp(double d) {//d distance
 		  if (d==0) {
 			  return 0;
@@ -148,7 +157,9 @@ public class AutoDrive extends Command {
 		System.out.println("execute");
 		d=m_distance-distanceTraveled();
 		System.out.println(d);
-		double newThrottle = calcThrottle(d);
+		double potentialThrottle=Math.min(calcThrottleSteadyState(), calcThrottleAccelerate(d));
+		double newThrottle=Math.min(potentialThrottle, calcThrottleDecelerate(d));
+		//double newThrottle = calcThrottle(d);
 		System.out.println(newThrottle);
 		if (newThrottle != Math.abs(m_strafeSpeed)) {
 			m_strafeSpeed=-1*newThrottle;
