@@ -34,14 +34,15 @@ public class AutonomousCommand extends CommandGroup {
 		//addSequential(new PrintOutRawValueOverTime(500,Robot.driveTrain.quadratureEncoder2,Robot.driveTrain.quadratureEncoder3,Robot.driveTrain.quadratureEncoder4));
     	//addSequential(new ResetEncoders());
     	//addParallel(new AutoDrive(0, -.75, 100, Robot.driveTrain.quadratureEncoder2));
-		addSequential(new AutoDrive(0,-.9, 60, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder3, Robot.driveTrain.quadratureEncoder4));//x speed percent,y speed percent,distance,encoder
-		addSequential(new ResetGyro());
-		addSequential(new Rotate(150,0.75));
+		addSequential(new AutoDrive(0,-.9, 108, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder3, Robot.driveTrain.quadratureEncoder4));//x speed percent,y speed percent,distance,encoder
+		//addSequential(new ResetGyro());
+		//addSequential(new Rotate(150,0.75));
 		System.out.println("In AutonomousCommand after reset gyro.getAngle() is: "+Robot.gyro.getAngle());
 		//addSequential(new PrintOutRotate());
 		addSequential(new ResetEncoders());
 		addSequential(new ResetGyro());
-		addSequential(new AutoDrive(0, -.9, 48, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder3, Robot.driveTrain.quadratureEncoder4));
+		//addSequential(new AutoDrive(0, -.9, 48, Robot.driveTrain.quadratureEncoder2, Robot.driveTrain.quadratureEncoder3, Robot.driveTrain.quadratureEncoder4));
+		//addParallel(new ControlEncoders(Robot.driveTrain.quadratureEncoder2,Robot.driveTrain.quadratureEncoder3,Robot.driveTrain.quadratureEncoder4));
 		//addSequential(new ResetEncoders());
 		//addSequential(new TimedCommand(5));
 		//addSequential(new ResetGyro());

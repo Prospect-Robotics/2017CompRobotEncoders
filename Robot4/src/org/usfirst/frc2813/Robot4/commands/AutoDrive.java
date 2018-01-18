@@ -171,7 +171,7 @@ public class AutoDrive extends Command {
 				System.out.println(m_strafeSpeed);
 			}*/
 		}
-		Robot.driveTrain.mecanumDrive(m_forwardSpeed, m_strafeSpeed, 0.0, Robot.gyro.getAngle());
+		Robot.driveTrain.mecanumDrive(m_forwardSpeed, m_strafeSpeed, 0.0, true);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
