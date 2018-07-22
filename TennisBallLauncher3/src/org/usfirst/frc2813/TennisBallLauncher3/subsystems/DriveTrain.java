@@ -56,7 +56,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void arcadeDrive(Joystick joystick1) {
-		double z = joystick1.getX()+joystick1.getTwist();
+		double z = joystick1.getX();//+joystick1.getTwist();
 		// jack wants the other side of the robot to be the front, so invert the forwards/backwards axis.
 		double x = -joystick1.getY();
 		// square X and cube Z.
